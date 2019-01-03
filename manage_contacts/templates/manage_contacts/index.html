@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<table class="table table-striped">
+
+    <thead>
+    <th>Name</th>
+    <th>Contacts</th>
+    </thead>
+    {% for person in person_list %}
+    <tr>
+        <td>
+            <strong>
+                <a href="{% url 'manage_contacts:detail' person.id %}">
+                    {{ person.name }}
+                </a>
+            </strong>
+        </td>
+        <td>
+            {{person.contact_set.count}}
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>New Person</h2>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'manage_contacts:add_contact_save' %}" method="post" class="col-6">
+{% csrf_token %}
+    {{form.as_table}}
+    <button class="btn btn-info">Save</button>
+</form>
+
+
+{% endblock %}

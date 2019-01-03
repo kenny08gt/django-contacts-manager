@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="d-flex">
+            <div class="background"
+                 style="background-image: url({{person.profile_picture}}); width: 150px; height: 150px;    background-position: center center;background-size: cover;"></div>
+            <h1 class="ml-1">{{person.name}}</h1>
+        </div>
+    </div>
+    <table class="table table-striped mt-3">
+
+        <thead>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        </thead>
+        {% for contact in person.contact_set.all %}
+        <tr>
+            <td>
+                <strong>
+                    {{ contact.name }}
+                </strong>
+            </td>
+            <td>{{contact.address}}</td>
+            <td>{{contact.phone}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
